@@ -14,6 +14,7 @@
 		145C2F061BD29616004F4CBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 145C2F041BD29616004F4CBA /* LaunchScreen.storyboard */; };
 		145C2F111BD29616004F4CBA /* TADATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C2F101BD29616004F4CBA /* TADATests.swift */; };
 		145C2F1C1BD29616004F4CBA /* TADAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C2F1B1BD29616004F4CBA /* TADAUITests.swift */; };
+		14FB88491BD2C219009A52A7 /* TDTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB88481BD2C219009A52A7 /* TDTask.swift */; settings = {ASSET_TAGS = (); }; };
 		88137C0AB0236CE82DF8DD9F /* Pods_TADA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519BE2F3E5301A4AF664019E /* Pods_TADA.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		145C2F171BD29616004F4CBA /* TADAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TADAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		145C2F1B1BD29616004F4CBA /* TADAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TADAUITests.swift; sourceTree = "<group>"; };
 		145C2F1D1BD29616004F4CBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14FB88481BD2C219009A52A7 /* TDTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TDTask.swift; path = Model/TDTask.swift; sourceTree = "<group>"; };
 		1D704197496F0BE9B4ED814D /* Pods-TADA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TADA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TADA/Pods-TADA.debug.xcconfig"; sourceTree = "<group>"; };
 		519BE2F3E5301A4AF664019E /* Pods_TADA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TADA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -114,9 +116,10 @@
 			isa = PBXGroup;
 			children = (
 				145C2F291BD2964B004F4CBA /* AppDelegate */,
-				145C2EFD1BD29616004F4CBA /* ViewController.swift */,
+				14FB88471BD2C13A009A52A7 /* Model */,
+				14FB88451BD2C12B009A52A7 /* Controller */,
 				145C2F2A1BD29657004F4CBA /* View-Image */,
-				145C2F071BD29616004F4CBA /* Info.plist */,
+				14FB88461BD2C133009A52A7 /* Helper */,
 			);
 			path = TADA;
 			sourceTree = "<group>";
@@ -155,6 +158,30 @@
 				145C2F041BD29616004F4CBA /* LaunchScreen.storyboard */,
 			);
 			name = "View-Image";
+			sourceTree = "<group>";
+		};
+		14FB88451BD2C12B009A52A7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				145C2EFD1BD29616004F4CBA /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		14FB88461BD2C133009A52A7 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				145C2F071BD29616004F4CBA /* Info.plist */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		14FB88471BD2C13A009A52A7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				14FB88481BD2C219009A52A7 /* TDTask.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		BBAC76F74F8B3CD6089A98A3 /* Frameworks */ = {
@@ -348,6 +375,7 @@
 			files = (
 				145C2EFE1BD29616004F4CBA /* ViewController.swift in Sources */,
 				145C2EFC1BD29616004F4CBA /* AppDelegate.swift in Sources */,
+				14FB88491BD2C219009A52A7 /* TDTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
