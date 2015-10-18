@@ -9,8 +9,8 @@
 import RealmSwift
 
 class TDTask: Object {
-    dynamic var title = ""
-    dynamic var taskDescription = ""
+    dynamic var title: String = ""
+    dynamic var taskDescription: String = ""
     dynamic var done: Bool = false
-    dynamic var created = NSDate()
+    dynamic var created: NSTimeInterval = NSDate().timeIntervalSince1970
 }
