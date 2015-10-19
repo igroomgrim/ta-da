@@ -9,6 +9,9 @@ TA-DA sound like Minions say TaaDaa .... is to-do list application it use realm 
 * **Part 2**
   * Create tableview and form for create to-do task, and reload from after create new task, show all task on tableview
 
+* **Part 3**
+  * Update/Edit to-do task object and show status in tableview.
+
 ## Contact
 
 Anak Mirasing
