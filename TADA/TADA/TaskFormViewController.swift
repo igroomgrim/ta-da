@@ -13,11 +13,20 @@ class TaskFormViewController: UIViewController {
 
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var statusSwitch: UISwitch!
+    var task: TDTask?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if let task = task {
+            titleTextField.text = task.title
+            descriptionTextView.text = task.taskDescription
+            if task.done {
+                statusSwitch.setOn(true, animated: false)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,20 +40,30 @@ class TaskFormViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(sender: AnyObject) {
-        createNewTask()
+        if let task = task {
+            updateTask(task)
+        }else{
+            createNewTask()
+        }
     }
     
     // MARK: - Create Task
     func createNewTask() {
         
         let task = TDTask()
-        task.title = titleTextField.text!
-        task.taskDescription = descriptionTextView.text
-        task.created = NSDate.timeIntervalSinceReferenceDate()
         
         if (titleTextField.text!.isEmpty || descriptionTextView.text.isEmpty) {
             print("notification : isEmpty")
         }else{
+            task.title = titleTextField.text!
+            task.taskDescription = descriptionTextView.text
+            task.created = NSDate.timeIntervalSinceReferenceDate()
+            if statusSwitch.on {
+                task.done = true
+            }else{
+                task.done = false
+            }
+            
             print("\(task.title)")
             print("\(task.taskDescription)")
             print("\(task.done)")
@@ -58,6 +77,25 @@ class TaskFormViewController: UIViewController {
             self.dismissViewControllerAnimated(true, completion:nil)
         }
         
+    }
+    
+    // MARK: - Update Task
+    func updateTask(task: TDTask) {
+        
+        let realm = try! Realm()
+        realm.beginWrite()
+
+        task.title = titleTextField.text!
+        task.taskDescription = descriptionTextView.text
+        if statusSwitch.on {
+            task.done = true
+        }else{
+            task.done = false
+        }
+        
+        try! realm.commitWrite()
+        
+        self.dismissViewControllerAnimated(true, completion:nil)
     }
     
 }

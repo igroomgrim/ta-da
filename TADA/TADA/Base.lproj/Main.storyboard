@@ -122,6 +122,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZiO-HW-5mh">
+                                <rect key="frame" x="20" y="271" width="50" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YWr-FH-rui">
+                                <rect key="frame" x="20" y="300" width="51" height="31"/>
+                                <animations/>
+                            </switch>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -133,14 +144,19 @@
                             <constraint firstAttribute="trailing" secondItem="ktr-3C-ERG" secondAttribute="trailing" constant="20" id="DkF-1C-l8H"/>
                             <constraint firstItem="ktr-3C-ERG" firstAttribute="leading" secondItem="onF-jb-Og9" secondAttribute="leading" constant="20" id="IHI-MU-3zu"/>
                             <constraint firstItem="jKY-Kg-sJN" firstAttribute="top" secondItem="ktr-3C-ERG" secondAttribute="bottom" constant="8" id="KFk-VA-a70"/>
+                            <constraint firstItem="YWr-FH-rui" firstAttribute="leading" secondItem="onF-jb-Og9" secondAttribute="leading" constant="20" id="Mqi-zo-d9F"/>
                             <constraint firstAttribute="trailing" secondItem="9HX-CJ-HF7" secondAttribute="trailing" id="Qfs-L9-yXp"/>
+                            <constraint firstItem="ZiO-HW-5mh" firstAttribute="top" secondItem="tF7-6I-57y" secondAttribute="bottom" constant="8" id="aao-oe-hZj"/>
                             <constraint firstItem="9HX-CJ-HF7" firstAttribute="top" secondItem="onF-jb-Og9" secondAttribute="top" id="bIt-qY-8kb"/>
                             <constraint firstItem="9HX-CJ-HF7" firstAttribute="leading" secondItem="onF-jb-Og9" secondAttribute="leading" id="gLO-uu-grt"/>
+                            <constraint firstItem="YWr-FH-rui" firstAttribute="top" secondItem="ZiO-HW-5mh" secondAttribute="bottom" constant="8" id="kdX-4a-8ws"/>
                             <constraint firstItem="ktr-3C-ERG" firstAttribute="top" secondItem="9HX-CJ-HF7" secondAttribute="bottom" constant="18" id="pXQ-LD-2J3"/>
+                            <constraint firstItem="ZiO-HW-5mh" firstAttribute="leading" secondItem="onF-jb-Og9" secondAttribute="leading" constant="20" id="wM9-ty-0De"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="descriptionTextView" destination="tF7-6I-57y" id="vVw-6F-GdB"/>
+                        <outlet property="statusSwitch" destination="YWr-FH-rui" id="WhO-3d-GWm"/>
                         <outlet property="titleTextField" destination="ktr-3C-ERG" id="xJE-2O-N9I"/>
                     </connections>
                 </viewController>

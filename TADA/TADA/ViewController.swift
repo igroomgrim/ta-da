@@ -52,6 +52,12 @@ class ViewController: UIViewController {
         let task = tasks[indexPath.row] as TDTask
         
         cell.textLabel?.text = "\(task.title)"
+        
+        if task.done {
+            cell.accessoryType = .Checkmark
+        }else{
+            cell.accessoryType = .None
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -66,6 +72,17 @@ class ViewController: UIViewController {
         return 66
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let realm = try! Realm()
+        let tasks = realm.objects(TDTask)
+        let task = tasks[indexPath.row] as TDTask
+        
+        performSegueWithIdentifier("TaskFormSegue", sender: task)
+        
+    }
+    
     // MARK: - Action
     @IBAction func createTaskButtonTapped(sender: AnyObject) {
         performSegueWithIdentifier("TaskFormSegue", sender: nil)
@@ -73,7 +90,13 @@ class ViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "TaskFormSegue" {
-            
+            if sender != nil {
+                if let taskFormViewController = segue.destinationViewController as? TaskFormViewController {
+                    if let task = sender as? TDTask {
+                        taskFormViewController.task = task
+                    }
+                }
+            }
         }
     }
 }
