@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LsW-1K-gO0">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="508"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -37,14 +37,28 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ceT-eS-XN5"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="F2n-bu-TPp">
+                                <rect key="frame" x="20" y="64" width="560" height="29"/>
+                                <animations/>
+                                <segments>
+                                    <segment title="Success"/>
+                                    <segment title="Unsuccess"/>
+                                </segments>
+                                <connections>
+                                    <action selector="statusChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="8HS-y4-EAh"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="LsW-1K-gO0" secondAttribute="trailing" id="7mQ-o3-lZ7"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LsW-1K-gO0" secondAttribute="bottom" id="GLm-JH-uBk"/>
-                            <constraint firstItem="LsW-1K-gO0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="HOf-pv-d0w"/>
-                            <constraint firstItem="LsW-1K-gO0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="naE-RK-kWy"/>
+                            <constraint firstItem="LsW-1K-gO0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5TC-vW-Lmw"/>
+                            <constraint firstAttribute="trailing" secondItem="F2n-bu-TPp" secondAttribute="trailing" constant="20" id="C1a-Vv-UUg"/>
+                            <constraint firstItem="F2n-bu-TPp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="CYx-dz-aLb"/>
+                            <constraint firstItem="LsW-1K-gO0" firstAttribute="top" secondItem="F2n-bu-TPp" secondAttribute="bottom" id="DS2-Kf-sbV"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LsW-1K-gO0" secondAttribute="bottom" id="R1Q-2P-cdO"/>
+                            <constraint firstItem="F2n-bu-TPp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="SgW-d3-thi"/>
+                            <constraint firstAttribute="trailing" secondItem="LsW-1K-gO0" secondAttribute="trailing" id="mT2-kw-og8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="TADA" id="12G-st-MIj">
@@ -55,6 +69,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="statusSwitch" destination="F2n-bu-TPp" id="PCI-h2-D5y"/>
                         <outlet property="tableView" destination="LsW-1K-gO0" id="F0B-kv-dvJ"/>
                         <segue destination="Nid-Wo-iS2" kind="presentation" identifier="TaskFormSegue" id="aZr-kP-HrZ"/>
                     </connections>

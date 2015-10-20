@@ -12,6 +12,7 @@ import RealmSwift
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var statusSwitch: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,7 @@ class ViewController: UIViewController {
         let tasks = realm.objects(TDTask)
         print(tasks)
         
-        // Do any additional setup after loading the view, typically from a nib.
+        statusSwitch.selectedSegmentIndex = 0;
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -43,12 +44,27 @@ class ViewController: UIViewController {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let realm = try! Realm()
-        return realm.objects(TDTask).count
+
+        if statusSwitch.selectedSegmentIndex == 0 {
+            let predicateTaskSuccess = NSPredicate(format: "done == %@", NSNumber(bool: true))
+            return realm.objects(TDTask).filter(predicateTaskSuccess).count
+        }else{
+            let predicateTaskUnsuccess = NSPredicate(format: "done == %@", NSNumber(bool: false))
+            return realm.objects(TDTask).filter(predicateTaskUnsuccess).count
+        }
     }
     
     func configureCell(cell: UITableViewCell, identifier: String, indexPath:NSIndexPath){
         let realm = try! Realm()
-        let tasks = realm.objects(TDTask)
+        
+        var predicate = NSPredicate()
+        if statusSwitch.selectedSegmentIndex == 0 {
+            predicate = NSPredicate(format: "done == %@", NSNumber(bool: true))
+        }else{
+            predicate = NSPredicate(format: "done == %@", NSNumber(bool: false))
+        }
+
+        let tasks = realm.objects(TDTask).filter(predicate)
         let task = tasks[indexPath.row] as TDTask
         
         cell.textLabel?.text = "\(task.title)"
@@ -76,7 +92,15 @@ class ViewController: UIViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let realm = try! Realm()
-        let tasks = realm.objects(TDTask)
+        
+        var predicate = NSPredicate()
+        if statusSwitch.selectedSegmentIndex == 0 {
+            predicate = NSPredicate(format: "done == %@", NSNumber(bool: true))
+        }else{
+            predicate = NSPredicate(format: "done == %@", NSNumber(bool: false))
+        }
+        
+        let tasks = realm.objects(TDTask).filter(predicate)
         let task = tasks[indexPath.row] as TDTask
         
         performSegueWithIdentifier("TaskFormSegue", sender: task)
@@ -99,5 +123,10 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func statusChanged(sender: UISegmentedControl) {
+        tableView.reloadData()
+    }
+    
 }
 
