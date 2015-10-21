@@ -64,7 +64,7 @@ class ViewController: UIViewController {
             predicate = NSPredicate(format: "done == %@", NSNumber(bool: false))
         }
 
-        let tasks = realm.objects(TDTask).filter(predicate)
+        let tasks = realm.objects(TDTask).filter(predicate).sorted("created",ascending:false)
         let task = tasks[indexPath.row] as TDTask
         
         cell.textLabel?.text = "\(task.title)"
@@ -100,7 +100,7 @@ class ViewController: UIViewController {
             predicate = NSPredicate(format: "done == %@", NSNumber(bool: false))
         }
         
-        let tasks = realm.objects(TDTask).filter(predicate)
+        let tasks = realm.objects(TDTask).filter(predicate).sorted("created",ascending:false)
         let task = tasks[indexPath.row] as TDTask
         
         performSegueWithIdentifier("TaskFormSegue", sender: task)
