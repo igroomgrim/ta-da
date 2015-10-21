@@ -12,6 +12,12 @@ TA-DA sound like Minions say TaaDaa .... is to-do list application it use realm 
 * **Part 3**
   * Update/Edit to-do task object and show status in tableview.
 
+* **Part 4**
+  *  Filtering object with NSPredicate.
+
+* **Part 5**
+  * Sorting object with sorted function.
+
 ## Contact
 
 Anak Mirasing
